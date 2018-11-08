@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kina</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <h1>Buy ticket on {{ info[0] }}</h1>
+        <p>Hour: {{ (info[4] | string)[:5] }}</p>
+        <p>Price: {{ info[2] }} PLN</p>
+        <p>Available seats: {{ info[6] }} / {{ info[3] }}</p>
+        <form action="" method="post">
+            <p>Name</p>
+            <input type="text" name="name">
+            <p>Surname</p>
+            <input type="text" name="surname">
+            <p>Your Age</p>
+            <input type="number" name="age">
+            <br>
+            <br>
+            <button type="submit" name="btn">Buy now</button>
+        </form>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cinemas</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        {% for cinema in cinemas %}
+        <!-- Jednym z argumentów jakie będzie miał cinemas to będzie lista movie_id któr
+        potem zamienimy na nazwę i inne rzeczy jak rating i cena -->
+        <h1>{{ cinema[0] }}</h1>
+        {% with lista = movies_list%}
+        <h2>Movies: </h2>
+        <ul>
+            <!-- cinema[1] to jest lista z id filmów -->
+            {% for movie_id in lista[cinema[1]] %}
+            {% with info = movie_info(movie_id) %}
+            <li>
+                <h3>{{ info[0] }}</h3>
+            </li>
+            <p>Rating: {{ info[1] }}</p>
+            <p>Hour of the screening: {{ (info[4] | string)[:5] }}</p>
+            <p>Price: {{ info[2] }}</p>
+            <p>Approved age: {{ info[5] }} years</p>
+            <p>Available Seats: {{ info[6] }} / {{ info[3] }}</p>
+            <!-- <form action="" method='POST'>
+                <button type="submit" name="add_ticket" value="{{ movie_id }}">Buy
+                    now</button>
+            </form> -->
+            <a href="{{ url_for('add_movie', movie_id=movie_id) }}">Buy now!</a>
+            {% endwith %}
+            {% endfor %}
+        </ul>
+        {% endwith %}
+        {% endfor %}
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New movie</title>
+</head>
+
+<body>
+    <h1>Add new movie</h1>
+    <form action="" method="post">
+        <p>Name</p>
+        <input type="text" name="name">
+        <p>Rating</p>
+        <input type="number" name="rating" step="0.1" max=10>
+        <p>Price</p>
+        <input type="number" name="price" min="0.1" step="0.01">
+        <p>Seats</p>
+        <input type="number" name="seats" min="1">
+        <p>Time</p>
+        <input type="time" name="hour">
+        <p>Legal Age</p>
+        <input type="number" name="approved_age" min="1">
+        <select name="cinema_id">
+            {% for cinema in cinemas %}
+            <option value='{{ cinema[0] }}'>{{ cinema[0] }}
+
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit" name='
+                btn'>Add movie</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>List of movies</title>
+    <style>
+        table {
+            max-width: 1024px;
+            margin: 100px auto;
+            padding: 5px 10px;
+            border: 2px solid black;
+        }
+
+        tr.header {
+            height: 50px;
+            border-bottom: 2px solid black;
+            text-transform: uppercase;
+            font-size: 20px;
+        }
+
+        tr {
+            height: 40px;
+        }
+
+        th,
+        td {
+            width: 200px;
+            text-align: center;
+        }
+
+        tr td:nth-of-type(1),
+        tr td:nth-of-type(2),
+        tr td:nth-of-type(3) {
+            border-right: 1px solid #222;
+        }
+
+
+
+        tr.header th {
+            border-bottom: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr class="header">
+            <th>Movie name</th>
+            <th>Rating</th>
+            <th>Cinemas</th>
+            <th>Legal Age</th>
+        </tr>
+        {% for name, value in dict_of_movies.items() %}
+        <tr>
+            <td>{{ name }}</td>
+            <td>{{ value[1] }}</td>
+            <td>
+                {% for i in value[0] %}
+                {% if i == value[0][-1] %}
+                {{i}}
+                {% else %}
+                {{i}},
+                {% endif %}
+                {% endfor %}
+            </td>
+            <td>{{ value[2] }} Years</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
